@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import User,HealthCondition,HealthIssues,HealthProfile
+from .models import User,HealthCondition,HealthIssues,HealthProfile,DietPlans,SymptomTips,ExerciseVideos
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.CharField(read_only=True)
@@ -36,3 +36,18 @@ class HealthProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = HealthProfile
         fields = ['id', 'condition', 'issue', 'description']
+
+
+class DietPlansSerializer(serializers.ModelSerializer):
+    health_profile = HealthProfileSerializer()
+
+    class Meta:
+        model = DietPlans
+        fields = '__all__'
+
+class ExerciseVideosSerializer(serializers.ModelSerializer):
+    health_profile = HealthProfileSerializer()
+
+    class Meta:
+        model = ExerciseVideos
+        fields = '__all__'
