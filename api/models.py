@@ -54,7 +54,7 @@ class HealthIssues(models.Model):
 class HealthProfile(models.Model):
     condition = models.ForeignKey(HealthCondition,on_delete = models.CASCADE)
     issue = models.ForeignKey(HealthIssues,on_delete = models.CASCADE)
-    description = description = models.TextField(null=True ,blank= True)
+    description = models.TextField(null=True ,blank= True)
 
     def __str__(self):
         return f"{self.issue.issue} --{self.condition.name}"

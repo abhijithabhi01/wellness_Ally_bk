@@ -1,6 +1,6 @@
 
 from rest_framework import serializers
-from .models import User,HealthCondition,HealthIssues,HealthProfile,DietPlans,SymptomTips,ExerciseVideos
+from .models import User,HealthCondition,HealthIssues,HealthProfile,DietPlans,SymptomTips,ExerciseVideos,Category,Product
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.CharField(read_only=True)
@@ -51,3 +51,21 @@ class ExerciseVideosSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExerciseVideos
         fields = '__all__'
+
+class SymptomTipsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SymptomTips
+        fields = '__all__'        
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'        
+
+class ProductSerializer(serializers.ModelSerializer):
+    category_name = serializers.ReadOnlyField(source='category.name')
+
+    class Meta:
+        model = Product
+        fields = ['category', 'category_name', 'name', 'description', 'image', 'price']        
