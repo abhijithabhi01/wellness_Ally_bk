@@ -2,6 +2,4 @@
 1) cd env_s
 2) scripts\activate
 3) cd ..
-
-
-python manage.py runserver
+4)python manage.py runserver
