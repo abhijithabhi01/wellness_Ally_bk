@@ -1,8 +1,7 @@
 # wellness_ally
-
-if no env_s :- goto cd env_s
-                scripts\activate
-                cd ..
+1) cd env_s
+2) scripts\activate
+3) cd ..
 
 
 python manage.py runserver
