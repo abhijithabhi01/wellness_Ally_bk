@@ -1,6 +1,9 @@
 
 from django.urls import path
-from .views import UserCreateView,LoginView,HealthIssuesListView,HealthProfileList,DietPlanList,ExerciseVideosList,ExerciseVideosDetail,SymptomTipList,SymptomTipDetail,CategoryList,CategoryProductsList,ProductDetail
+from .views import (UserCreateView,LoginView,HealthIssuesListView,HealthProfileList,
+                    DietPlanList,ExerciseVideosList,ExerciseVideosDetail,SymptomTipList,SymptomTipDetail,
+                    CategoryList,CategoryProductsList,ProductDetail,OrderCreateView,OrderDetail,CommunityChatCreateView,
+                    CommunityChatListView,PersonalChatCreateAPIView,PersonalChatListView,AppointmentCreateView)
 urlpatterns = [
  path('register/',UserCreateView.as_view(),name='register'),
  path('login/',LoginView.as_view(),name='login'),
@@ -14,6 +17,15 @@ urlpatterns = [
  path('category/<int:health_profile_id>/', CategoryList.as_view(), name='category-list'),
  path('categories/<int:category_id>/products/', CategoryProductsList.as_view(), name='category-products-list'),
  path('products/<int:product_id>/', ProductDetail.as_view(), name='product-detail'),
+
+ path('order/create/',OrderCreateView.as_view(),name='order-create'),
+ path('order/<int:order_id>/',OrderDetail.as_view(),name='order-detail'),
+
+ path('community-chat/create/',CommunityChatCreateView.as_view(),name='cummunity chat'),
+ path('community-chat/list/',CommunityChatListView.as_view(),name='cummunity-list'),
+ path('personal-chat/create/',PersonalChatCreateAPIView.as_view(),name='personal-chat'),
+ path('personal-chat/list/',PersonalChatListView.as_view(),name='list-personal-chat'),
+ path('appointment/create/',AppointmentCreateView.as_view(),name='appoinment')
 
 
 ]
